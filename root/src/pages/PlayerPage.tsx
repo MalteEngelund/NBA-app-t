@@ -2,12 +2,13 @@ import { useParams } from "react-router";
 import { useFetch } from "../hooks/useFetch";
 import { Title } from "../components/Title/Title";
 import { H2Title } from "../components/H2Title/H2Title";
+import type { PlayerPageTypes, PlayerStats } from "../types/PlayerPageTypes";
 
 export function PlayerPage() {
 
   const { id } = useParams();
 
-  const { data, isLoading, error } = useFetch(
+  const { data, isLoading, error } = useFetch<PlayerPageTypes>(
     `http://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/athletes/${id}?lang=en&region=us`
   );
 
@@ -16,7 +17,7 @@ export function PlayerPage() {
     data: statsData,
     isLoading: statsLoading,
     error: statsError,
-  } = useFetch(statsUrl);
+  } = useFetch<PlayerStats>(statsUrl);
 
   if (isLoading || statsLoading) {
     return <h2>Loading data...</h2>;
