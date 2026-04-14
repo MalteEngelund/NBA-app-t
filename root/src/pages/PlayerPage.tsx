@@ -11,7 +11,12 @@ export function PlayerPage() {
     `https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/athletes/${id}?lang=en&region=us`
   );
 
-  const statsUrl = data?.statistics?.$ref;
+  // const statsUrl = data?.statistics?.$ref; returneret url er http
+  // netlify kræver at alle API kald skal være https for at siden kan vise data
+  let statsUrl = data?.statistics?.$ref;
+  if (statsUrl && statsUrl.startsWith("http:")) {
+  statsUrl = statsUrl.replace(/^http:/, "https:");
+  }
   const {
     data: statsData,
     isLoading: statsLoading,
