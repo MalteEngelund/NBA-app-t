@@ -1,7 +1,7 @@
 {
 	"name": "EngoBasket",
 	"short_name": "EngBa",
-	"start_url": "./index.html",
+	"start_url": "/",
 	"id": "./index.html",
 	"display": "standalone",
 	"background_color": "#1D4ED8",
