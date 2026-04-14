@@ -8,7 +8,7 @@ export function PlayerPage() {
   const { id } = useParams();
 
   const { data, isLoading, error } = useFetch<PlayerPageTypes>(
-    `http://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/athletes/${id}?lang=en&region=us`
+    `https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/athletes/${id}?lang=en&region=us`
   );
 
   const statsUrl = data?.statistics?.$ref;
