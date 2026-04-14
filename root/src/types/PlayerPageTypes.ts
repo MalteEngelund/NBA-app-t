@@ -123,3 +123,46 @@ export interface Status {
   type:         string;
   abbreviation: string;
 }
+
+
+
+
+
+// Stats
+
+export interface PlayerStats {
+  $ref:    string;
+  athlete: Athlete;
+  splits:  Splits;
+}
+
+export interface Athlete {
+  $ref: string;
+}
+
+export interface Splits {
+  id:           string;
+  name:         string;
+  abbreviation: string;
+  type:         string;
+  categories:   Category[];
+}
+
+export interface Category {
+  name:             string;
+  displayName:      string;
+  shortDisplayName: string;
+  abbreviation:     string;
+  summary:          string;
+  stats:            Stat[];
+}
+
+export interface Stat {
+  name:             string;
+  displayName:      string;
+  shortDisplayName: string;
+  description:      string;
+  abbreviation:     string;
+  value:            number;
+  displayValue:     string;
+}

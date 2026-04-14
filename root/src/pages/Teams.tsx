@@ -1,9 +1,10 @@
 import { Title } from "../components/Title/Title";
 import { useFetch } from "../hooks/useFetch";
+import type { TeamsTypes } from "../types/TeamsTypes";
 
 export function Teams() {
   
-  const { data, isLoading, error } = useFetch(
+  const { data, isLoading, error } = useFetch<TeamsTypes>(
         `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams`,
       )
   

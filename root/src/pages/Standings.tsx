@@ -1,11 +1,12 @@
 import { H2Title } from "../components/H2Title/H2Title";
 import { Title } from "../components/Title/Title";
 import { useFetch } from "../hooks/useFetch"
+import type { Entry, StandingsTypes } from "../types/StandingsTypes";
 
 export function Standings() {
 
 
-  const { data, isLoading, error } = useFetch(
+  const { data, isLoading, error } = useFetch<StandingsTypes>(
       `https://site.api.espn.com/apis/v2/sports/basketball/nba/standings`,
     )
 
@@ -19,7 +20,7 @@ export function Standings() {
     console.log(data);
     
 
-  const sortByPlayoffSeed = (entries) => {
+  const sortByPlayoffSeed = (entries: Entry[] | undefined) => {
     if (!entries) return [];
     return [...entries].sort((a, b) => {
       const aSeed = a.stats?.find(stat => stat.name === "playoffSeed")?.value ?? 99;

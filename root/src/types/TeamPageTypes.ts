@@ -60,20 +60,7 @@ export interface College {
   logos:     Logo[];
 }
 
-export interface Logo {
-  href:        string;
-  width:       number;
-  height:      number;
-  alt:         string;
-  rel:         LogoRel[];
-  lastUpdated: string;
-}
-
-export enum LogoRel {
-  Dark = "dark",
-  Default = "default",
-  Full = "full",
-}
+export type LogoRel = "dark" | "default" | "full";
 
 export interface PurpleContract {
   birdStatus:             number;
@@ -135,10 +122,7 @@ export interface Injury {
   date:   string;
 }
 
-export enum StatusEnum {
-  DayToDay = "Day-To-Day",
-  Out = "Out",
-}
+export type StatusEnum = "Day-To-Day" | "Out";
 
 export interface Link {
   language:   Language;
@@ -150,33 +134,37 @@ export interface Link {
   isPremium:  boolean;
 }
 
-export enum Language {
-  EnUS = "en-US",
+export interface Logo {
+  href: string;
+  alt: string;
+  rel: LogoRel[];
+  width: number;
+  height: number;
 }
 
-export enum LinkRel {
-  Advancedstats = "advancedstats",
-  Athlete = "athlete",
-  Bio = "bio",
-  Desktop = "desktop",
-  Gamelog = "gamelog",
-  News = "news",
-  Overview = "overview",
-  Playercard = "playercard",
-  Splits = "splits",
-  Stats = "stats",
-}
+export type Language = "en-US";
 
-export enum Text {
-  AdvancedStats = "Advanced Stats",
-  Bio = "Bio",
-  GameLog = "Game Log",
-  News = "News",
-  Overview = "Overview",
-  PlayerCard = "Player Card",
-  Splits = "Splits",
-  Stats = "Stats",
-}
+export type LinkRel =
+  | "advancedstats"
+  | "athlete"
+  | "bio"
+  | "desktop"
+  | "gamelog"
+  | "news"
+  | "overview"
+  | "playercard"
+  | "splits"
+  | "stats";
+
+export type Text =
+  | "Advanced Stats"
+  | "Bio"
+  | "Game Log"
+  | "News"
+  | "Overview"
+  | "Player Card"
+  | "Splits"
+  | "Stats";
 
 export interface Position {
   id:           string;
@@ -186,17 +174,9 @@ export interface Position {
   leaf:         boolean;
 }
 
-export enum PositionAbbreviation {
-  C = "C",
-  F = "F",
-  G = "G",
-}
+export type PositionAbbreviation = "C" | "F" | "G";
 
-export enum Name {
-  Center = "Center",
-  Forward = "Forward",
-  Guard = "Guard",
-}
+export type Name = "Center" | "Forward" | "Guard";
 
 export interface StatusClass {
   id:           string;
@@ -205,13 +185,9 @@ export interface StatusClass {
   abbreviation: NameEnum;
 }
 
-export enum NameEnum {
-  Active = "Active",
-}
+export type NameEnum = "Active";
 
-export enum Type {
-  Active = "active",
-}
+export type Type = "active";
 
 export interface TeamElement {
   $ref: string;
@@ -232,15 +208,25 @@ export interface TeamPageSeason {
 }
 
 export interface TeamPageTeam {
-  id:              string;
-  abbreviation:    string;
-  location:        string;
-  name:            string;
-  displayName:     string;
-  clubhouse:       string;
-  color:           string;
-  logo:            string;
-  recordSummary:   string;
-  seasonSummary:   string;
+  id: string;
+  abbreviation: string;
+  location: string;
+  name: string;
+  displayName: string;
+  clubhouse: string;
+  color: string;
+  logo: string;
+  recordSummary: string;
+  seasonSummary: string;
   standingSummary: string;
+  logos: Logo[];
+  record?: TeamRecord;
+}
+
+export interface TeamRecord {
+  items: TeamRecordItem[];
+}
+
+export interface TeamRecordItem {
+  summary: string;
 }

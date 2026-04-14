@@ -1,8 +1,8 @@
 import { useFetch } from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
-import { Type, type TeamPage } from "../types/TeamPageTypes";
 import { Title } from "../components/Title/Title";
 import { H2Title } from "../components/H2Title/H2Title";
+import type { TeamPage } from "../types/TeamPageTypes";
 
 export function TeamPage() {
   const { id } = useParams();
@@ -27,7 +27,7 @@ export function TeamPage() {
     data: rosterData,
     isLoading: rosterLoading,
     error: rosterError,
-  } = useFetch<TeamPage>(rosterUrl);
+  } = useFetch<TeamPage>(rosterUrl || "");
   console.log("Fetched rosterData:", rosterData);
 
   if (teamLoading || (teamId && rosterLoading)) {
@@ -53,7 +53,7 @@ export function TeamPage() {
             />
           )}
         </div>
-        <Title title={teamData?.team?.displayName} />
+        <Title title={teamData?.team?.displayName || "Team Details"} />
       </header>
       <section>
         <H2Title title="Roster" />

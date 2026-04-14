@@ -1,6 +1,5 @@
 import { useParams } from "react-router";
 import { useFetch } from "../hooks/useFetch";
-import { Title } from "../components/Title/Title";
 import { H2Title } from "../components/H2Title/H2Title";
 import type { PlayerPageTypes, PlayerStats } from "../types/PlayerPageTypes";
 
@@ -17,7 +16,7 @@ export function PlayerPage() {
     data: statsData,
     isLoading: statsLoading,
     error: statsError,
-  } = useFetch<PlayerStats>(statsUrl);
+  } = useFetch<PlayerStats>(statsUrl || "");
 
   if (isLoading || statsLoading) {
     return <h2>Loading data...</h2>;
@@ -32,15 +31,17 @@ export function PlayerPage() {
   console.log("Player data:", data);
   console.log("Stats data:", statsData);
 
-  const formattedDob = new Date(data?.dateOfBirth).toLocaleDateString("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
+  const formattedDob = data?.dateOfBirth
+    ? new Date(data.dateOfBirth).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : "";
 
   return (
     <main className="bg-gray-100">
-      <Title title={data?.displayName} />
+      <H2Title title={data?.displayName || "Player Details"} />
       
       
       <div className="flex justify-center items-center gap-4">
