@@ -67,8 +67,15 @@ export function PlayerPage() {
       {statsData && (
         <div>
           <h2></h2>
-          <H2Title title="Stats Per Game - Current Season" />
+          <H2Title title="Career Stats" />
           <ul className="">
+            <li className="flex gap-4 justify-between items-center bg-gray-300  py-2 px-4">
+              GP: {
+                statsData?.splits?.categories?.[1]?.stats?.find(
+                (stat: any) => stat?.name === "gamesPlayed" || stat?.displayName === "Games Played"
+                )?.displayValue || "N/A"
+              }
+            </li>
             <li className="flex gap-4 justify-between items-center bg-gray-200  py-2 px-4">
               PTS: {
                 statsData?.splits?.categories?.[2]?.stats?.find(

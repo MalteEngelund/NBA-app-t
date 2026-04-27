@@ -53,11 +53,7 @@ export function Standings() {
         </div>
         <div>
           <H2Title title="West" />
-          <div className="flex justify-between px-4">
-            <h3>Ranking</h3>
-            <h3>Team</h3>
-            <h3>Record</h3>
-          </div>
+          
           <ul>
             {westEntries.map((entry, idx) => (
               <li key={entry.team.id} className="flex gap-4 justify-between items-center odd:bg-gray-200 even:bg-gray-300 py-2 px-4">

@@ -10,7 +10,7 @@ import { PlayerPage } from './pages/PlayerPage'
 function App() {
 
   if('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
+    navigator.serviceWorker.register('/swV2.js')
     .then(reg => console.log('service worker registered', reg))
     .catch(err => console.error('service worker not registered', err)) 
   }
